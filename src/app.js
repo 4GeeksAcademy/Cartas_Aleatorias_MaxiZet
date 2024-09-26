@@ -7,5 +7,30 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //write your code here
-  console.log("Hello Rigo from the console!");
+  let cardValues = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "A",
+    "J",
+    "Q",
+    "K"
+  ];
+
+  let cardPinta = ["♦", "♥", "♠", "♣"];
+
+  function elegirAleatorio(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+  const valorAleatorio = elegirAleatorio(cardValues);
+  const pintaAleatoria = elegirAleatorio(cardPinta);
+
+  document.querySelector(".value").innerHTML = valorAleatorio;
+  document.querySelector(".pinta").innerHTML = pintaAleatoria;
 };
