@@ -45,12 +45,13 @@ window.onload = function() {
       }
     }
     colorCard();
+    setInterval(actualizarCarta, 5000);
   }
 
   const containerFluid = document.getElementById("container");
   const buttonElement = document.createElement("button");
   buttonElement.classList = "btn btn-danger mt-3 fs-3";
-  buttonElement.innerHTML = "Find your lucky card";
+  buttonElement.innerHTML = "Start Generator Card";
 
   buttonElement.addEventListener("click", actualizarCarta);
   containerFluid.appendChild(buttonElement);
