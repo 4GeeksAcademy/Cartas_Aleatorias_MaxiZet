@@ -28,9 +28,30 @@ window.onload = function() {
   function elegirAleatorio(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
-  const valorAleatorio = elegirAleatorio(cardValues);
-  const pintaAleatoria = elegirAleatorio(cardPinta);
 
-  document.querySelector(".value").innerHTML = valorAleatorio;
-  document.querySelector(".pinta").innerHTML = pintaAleatoria;
+  function actualizarCarta() {
+    const valorAleatorio = elegirAleatorio(cardValues);
+    const pintaAleatoria = elegirAleatorio(cardPinta);
+
+    document.querySelector(".value").innerHTML = valorAleatorio;
+    document.getElementById("pintaTop").innerHTML = pintaAleatoria;
+    document.getElementById("pintaBot").innerHTML = pintaAleatoria;
+
+    function colorCard() {
+      let colorPinta;
+      if (pintaAleatoria == "♥" || pintaAleatoria == "♦") {
+        document.getElementById("pintaTop").classList.add("text-danger");
+        document.getElementById("pintaBot").classList.add("text-danger");
+      }
+    }
+    colorCard();
+  }
+
+  const containerFluid = document.getElementById("container");
+  const buttonElement = document.createElement("button");
+  buttonElement.classList = "btn btn-danger mt-3 fs-3";
+  buttonElement.innerHTML = "Find your lucky card";
+
+  buttonElement.addEventListener("click", actualizarCarta);
+  containerFluid.appendChild(buttonElement);
 };
