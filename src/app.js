@@ -58,14 +58,14 @@ window.onload = function() {
     }
   }
 
-  const containerFluid = document.getElementById("container");
+  const containerElement = document.getElementById("container");
   const buttonCard = document.createElement("button");
   const buttonTimer = document.createElement("button");
   const buttonTimerOff = document.createElement("button");
 
-  buttonCard.classList = "btn btn-danger mt-3 mx-2 fs-3";
+  buttonCard.classList = "btn btn-warning mt-3 mx-2 fs-3";
   buttonTimer.classList = "btn btn-danger mt-3 mx-2 fs-3";
-  buttonTimerOff.classList = "btn btn-danger mt-3 mx-2 fs-3";
+  buttonTimerOff.classList = "btn btn-dark mt-3 mx-2 fs-3";
   buttonCard.innerHTML = "Start Generator Card";
   buttonTimer.innerHTML = "Start Timer";
   buttonTimerOff.innerHTML = "Stop Timer";
@@ -78,7 +78,7 @@ window.onload = function() {
     clearInterval(intervalId);
   });
 
-  containerFluid.appendChild(buttonCard);
-  containerFluid.appendChild(buttonTimer);
-  containerFluid.appendChild(buttonTimerOff);
+  containerElement.appendChild(buttonCard);
+  containerElement.appendChild(buttonTimer);
+  containerElement.appendChild(buttonTimerOff);
 };
