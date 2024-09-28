@@ -4,7 +4,7 @@ import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
-
+let intervalId;
 window.onload = function() {
   //write your code here
   let cardValues = [
@@ -30,29 +30,55 @@ window.onload = function() {
   }
 
   function actualizarCarta() {
-    const valorAleatorio = elegirAleatorio(cardValues);
-    const pintaAleatoria = elegirAleatorio(cardPinta);
+    let valorAleatorio = elegirAleatorio(cardValues);
+    let pintaAleatoria = elegirAleatorio(cardPinta);
 
     document.querySelector(".value").innerHTML = valorAleatorio;
     document.getElementById("pintaTop").innerHTML = pintaAleatoria;
     document.getElementById("pintaBot").innerHTML = pintaAleatoria;
 
-    function colorCard() {
-      let colorPinta;
-      if (pintaAleatoria == "♥" || pintaAleatoria == "♦") {
-        document.getElementById("pintaTop").classList.add("text-danger");
-        document.getElementById("pintaBot").classList.add("text-danger");
-      }
+    colorCard(pintaAleatoria);
+  }
+
+  function colorCard(pinta) {
+    if (pinta == "♥" || pinta == "♦") {
+      document
+        .getElementById("pintaTop")
+        .classList.replace("text-black", "text-danger");
+      document
+        .getElementById("pintaBot")
+        .classList.replace("text-black", "text-danger");
+    } else {
+      document
+        .getElementById("pintaTop")
+        .classList.replace("text-danger", "text-black");
+      document
+        .getElementById("pintaBot")
+        .classList.replace("text-danger", "text-black");
     }
-    colorCard();
-    setInterval(actualizarCarta, 5000);
   }
 
   const containerFluid = document.getElementById("container");
-  const buttonElement = document.createElement("button");
-  buttonElement.classList = "btn btn-danger mt-3 fs-3";
-  buttonElement.innerHTML = "Start Generator Card";
+  const buttonCard = document.createElement("button");
+  const buttonTimer = document.createElement("button");
+  const buttonTimerOff = document.createElement("button");
 
-  buttonElement.addEventListener("click", actualizarCarta);
-  containerFluid.appendChild(buttonElement);
+  buttonCard.classList = "btn btn-danger mt-3 mx-2 fs-3";
+  buttonTimer.classList = "btn btn-danger mt-3 mx-2 fs-3";
+  buttonTimerOff.classList = "btn btn-danger mt-3 mx-2 fs-3";
+  buttonCard.innerHTML = "Start Generator Card";
+  buttonTimer.innerHTML = "Start Timer";
+  buttonTimerOff.innerHTML = "Stop Timer";
+
+  buttonCard.addEventListener("click", actualizarCarta);
+  buttonTimer.addEventListener("click", () => {
+    intervalId = setInterval(actualizarCarta, 1000);
+  });
+  buttonTimerOff.addEventListener("click", () => {
+    clearInterval(intervalId);
+  });
+
+  containerFluid.appendChild(buttonCard);
+  containerFluid.appendChild(buttonTimer);
+  containerFluid.appendChild(buttonTimerOff);
 };

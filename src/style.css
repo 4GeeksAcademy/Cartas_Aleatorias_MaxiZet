@@ -7,3 +7,7 @@
 .value {
   font-size: 100px;
 }
+
+#pintaBot {
+  transform: rotate(180deg);
+}
