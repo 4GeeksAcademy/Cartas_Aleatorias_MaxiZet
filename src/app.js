@@ -58,12 +58,12 @@ window.onload = function() {
     }
   }
 
-  let customWidth = 250;
+  // let customWidth = 250;
 
-  documento.querySelector("#input-width").addEventListener("change", event => {
-    customWidth = event.target.value;
-    document.querySelector(".card").style.width = customWidth + "px";
-  });
+  // documento.querySelector("#input-width").addEventListener("change", event => {
+  //   customWidth = event.target.value;
+  //   document.querySelector(".card").style.width = customWidth + "px";
+  // });
 
   const containerElement = document.getElementById("container");
   const buttonCard = document.createElement("button");
